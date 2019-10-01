@@ -1,31 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class AxisExample : MonoBehaviour
 {
-    public GUIText textOutput;
-    public Text horizontalValueDisplayText;
-    public Text verticalValueDisplayText;
-    public float hRange;
-    public float vRange;
+    public float range;
+    //public TextMesh textOutput;
+    Text display;
 
-    // Use this for initialization
     void Start()
     {
-
+        display = GameObject.Find("Canvas/T").GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        float xPos = h * hRange;
-        float vPos = v * vRange;
+        float xPos = h * range;
+        float yPos = v * range;
 
-        transform.position = new Vector3(xPos, 0, vPos);
-        horizontalValueDisplayText.text = h.ToString("F2");
-        verticalValueDisplayText.text = v.ToString("F2");
+        display.text = "hi";
+        //GetComponent<TextMesh>().text = "Hello World";
 
+        //textOutput = (TextMesh)textOutput.GetComponent("T");
+        //transform.position = new Vector3(xPos, yPos, 0);
+        //display.text = "Horizontal Value Returned: " + h.ToString("F2") + "\nVertical Value Returned: " + v.ToString("F2");
     }
 }
